@@ -1,0 +1,8 @@
+com.stackmob.android.sdk
+com.stackmob.android.sdk.activity
+com.stackmob.android.sdk.api
+com.stackmob.android.sdk.callback
+com.stackmob.android.sdk.demo.activity
+com.stackmob.android.sdk.exception
+com.stackmob.android.sdk.net
+com.stackmob.android.sdk.util
