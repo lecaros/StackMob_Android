@@ -18,10 +18,7 @@ public class StackMobDemoActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    StackMob.getInstance().setApplication(
-        "7f1aebc7-0fb8-4265-bfea-2c42c08a3bf0",
-        "81573b21-b948-4339-baa3-dbffe0ca4503", "androidtest",
-        "stackmob", "stackmob.com", "user", 0);
+    StackMob.getInstance().setApplication(YOUR_API_KEY, YOUR_API_SECRET, YOUR_APP_NAME, SUBDOMAIN, "stackmob.com", USER_OBJECT_NAME, API_VERSION);
   }
 
   public void buttonClick(View v) {
