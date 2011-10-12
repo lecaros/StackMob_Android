@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.stackmob.android</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <name>StackMob Parent POM</name>
+    <version>0.01-SNAPSHOT</version>
+
+    <organization>
+        <name>StackMob</name>
+        <url>http://www.stackmob.com</url>
+    </organization>
+
+    <modules>
+        <module>SDK</module>
+        <module>Demo</module>
+    </modules>
+
+</project>
