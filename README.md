@@ -233,3 +233,19 @@ Also note that if you want to run tests, you must open StackMobTestCommon.java a
 The stock [Robolectric library](http://pivotal.github.com/robolectric/) completely mocks all HTTP requests, so with that library, the SDK cannot be tested against real StackMob servers while running inside the JVM. We want to do both, so we rely on [https://github.com/Macarse/robolectric](this version of Robolectric) which mocks everything except HTTP requests.
 
 We know this whole setup is far from ideal, and we're working on building a better way to test our SDK without mocking our HTTP requests. While we're working on a better solution, you should run normal (non-test) maven builds with ```-DskipTest``` so that you don't need to install custom Robolectric.
+
+## Copyright
+
+Copyright 2011 StackMob
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
