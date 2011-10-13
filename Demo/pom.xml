@@ -21,6 +21,13 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.stackmob</groupId>
+    		<artifactId>stackmob-java-client-sdk</artifactId>
+    		<version>0.1.1</version>
+    		<scope>compile</scope>
+		</dependency>
+	
+		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>1.7.1</version>

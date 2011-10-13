@@ -1,15 +1,15 @@
 # Stackmob Android SDK
-This is the Official Stackmob Android SDK
+This is the Official Stackmob Android SDK. This SDK builds on top of [the StackMob Java Client SDK](https://github.com/stackmob/stackmob-java-client-sdk) to provide various convenience components for Android apps.
 
 # Getting Started
 
 ### With Maven
-Maven is the best way to get set up with the SDK. Here's how:
+Maven is the best way to get set up with the SDK. You can do so with this script:
 
 ```bash
 git clone git@github.com:stackmob/StackMob_Android.git
 cd StackMob_Android/SDK
-mvn clean install -DskipTests #see below in "A note about testing the SDK" for why we need to skip tests
+mvn clean install
 ```
 
 Then, add this to your pom.xml file:
@@ -34,10 +34,9 @@ If you don't use Maven, we have you covered as well:
 
 # Coding
 
-The SDK aims to be simple to setup and use. API docs are [here](http://stackmob.github.com/StackMob_Android/javadoc/0.0.1/apidocs/), and below are some code samples that show its use. All assume that you have a StackMob server set up with a Game object model that looks like this in Java:
+Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be familiar. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
 ```java
-
 import java.util.List;
 
 class Game {
@@ -64,20 +63,18 @@ import com.stackmob.android.sdk.api.StackMob;
 import com.stackmob.android.sdk.api.StackMob;
 import com.stackmob.android.sdk.callback.StackMobCallback;
 import com.stackmob.android.sdk.exception.StackMobException;
+import com.stackmob.android.sdk.common.StackMobCommon;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-StackMob stackmob = StackMob.getInstance();
-final String API_KEY = ...
-final String API_SECRET = ...
-final String APP_SUBDOMAIN = ...
-final String APP_NAME = ...
-final String DOMAIN = "stackmob.com";
-final String USER_OBJECT_NAME = "users"; //change this if you have a user object in your object model of a different name
-final Integer API_VERSION_NUM = 0; //0 for Sandbox, >0 for deployed
-stackmob.setApplication(API_KEY, API_SECRET, APP_NAME, APP_SUBDOMAIN, DOMAIN, USER_OBJECT_NAME, API_VERSION_NUM);
+StackMobCommon.API_KEY = …;
+StackMobCommon.API_SECRET = …;
+StackMobCommon.API_SECRET = …;
+StackMobCommon.USER_OBJECT_NAME = …; //change this if you have a user object in your object model of a different name
+StackMobCommon.API_VERSION = …; //0 for Sandbox, >0 for deployed
+StackMob stackmob = StackMobCommon.getStackMobInstance();
 ```
 
 ### GET
@@ -88,7 +85,7 @@ stackmob.setApplication(API_KEY, API_SECRET, APP_NAME, APP_SUBDOMAIN, DOMAIN, US
 Map<String, Object> arguments = new HashMap<String, Object>();
 arguments.put("game_id", "tic-tac-toe");
 
-StackMob.getInstance().get("Game", arguments, new StackMobCallback() {
+stackmob.get("Game", arguments, new StackMobCallback() {
     @Override
     public void success(String responseBody) {
         System.out.println("got object with response: " + responseBody);
@@ -109,7 +106,7 @@ List<String> players = new ArrayList<String>();
 players.add("John Doe");
 players.add("Jane Doe");
 Game g = new Game(players, "charades", System.currentTimeMillis(), System.currentTimeMillis(), "Charades - kinda boring with only 2 people!");
-StackMob.getInstance().post("game", game, new StackMobCallback() {
+stackmob.post("game", game, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -128,7 +125,7 @@ players.add("Jane Doe");
 players.add("Bob Generic")
 
 Game newGame = new Game(players, "charades", System.currentTimeMillis(), System.currentTimeMillis(), "Charades - now less boring with 3 people!");
-StackMob.getInstance().put("game", "charades", newGame, new StackMobCallback() {
+stackmob.put("game", "charades", newGame, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -141,7 +138,7 @@ StackMob.getInstance().put("game", "charades", newGame, new StackMobCallback() {
 ```java
 //cancel the charades game
 
-StackMob.getInstance().delete("game", "charades", new StackMobCallback() {
+stackmob.delete("game", "charades", new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -153,7 +150,7 @@ StackMob.getInstance().delete("game", "charades", new StackMobCallback() {
 Register a new user with a Facebook token:
 
 ```java
-StackMob.getInstance().registerWithFacebookToken(fbToken, "John Doe", new StackMobCallback() {
+stackmob.registerWithFacebookToken(fbToken, "John Doe", new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -164,7 +161,7 @@ StackMob.getInstance().registerWithFacebookToken(fbToken, "John Doe", new StackM
 Link an existing user to their FB account:
 
 ```java
-StackMob.getInstance().linkUserWithFacebookToken(fbToken, fbTokenSecret, new StackMobCallback() {
+stackmob.linkUserWithFacebookToken(fbToken, fbTokenSecret, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -176,7 +173,7 @@ StackMob.getInstance().linkUserWithFacebookToken(fbToken, fbTokenSecret, new Sta
 Register a new user with a Twitter token, secret, and username:
 
 ```java
-StackMob.getInstance().registerWithTwitterToken(twitterToken, twitterSecret, twitterUsername, new StackMobCallback() {
+stackmob.registerWithTwitterToken(twitterToken, twitterSecret, twitterUsername, new StackMobCallback() {
    @Override
    public void success(String responseBody) {}
    @Override
@@ -187,7 +184,7 @@ StackMob.getInstance().registerWithTwitterToken(twitterToken, twitterSecret, twi
 Link an existing user to their Twitter account:
 
 ```java
-StackMob.getInstance().linkUserWithTwitterToken(twitterToken, twitterSecret, new StackMobCallback() {
+stackmob.linkUserWithTwitterToken(twitterToken, twitterSecret, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -199,42 +196,20 @@ StackMob.getInstance().linkUserWithTwitterToken(twitterToken, twitterSecret, new
 StackMob works with Google's C2DM service [http://code.google.com/android/c2dm](http://code.google.com/android/c2dm/). To get a C2DM registration ID, follow the instructions at [http://code.google.com/android/c2dm/#registering](http://code.google.com/android/c2dm/#registering). Then, in your handleRegistration method, include this line to register the new registrationID with your servers on StackMob:
 
 ```java
-StackMob.getInstance().registerForPushWithUser(stackmobUsername, intent.getStringExtra("registration_id"), new StackMobCallback() {
+stackmob.registerForPushWithUser(stackmobUsername, intent.getStringExtra("registration_id"), new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
     public void failure(StackMobException e) {}
-})
+});
 ```
 
 Note that you only should register a push notification token if you have a valid StackMob username. In the end, your C2DM registration code should look similar to the code in [this tutorial](http://www.vogella.de/articles/AndroidCloudToDeviceMessaging/article.html).
 
 # Contributing
-We encourage contributions to the StackMob SDK. To do so, fork this repository, make your changes and submit a pull request.
+We encourage contributions to the StackMob SDK. To do so, fork this repository, make your changes and submit a pull request with your changes.
 
-## A note about testing the SDK
-The SDK test suite depends on a forked version of the Robolectric Android mocking library. If you want to run the test suite, you have to set up this Robolectric fork. Here's how:
-
-1. in the Android SDK and AVD manager, go to "Available Packages" and select all under "Android Repository" and all under "Third Party Add-ons" -> "Google, Inc."
-2. then, run this script:
-
-```bash
-git clone https://github.com/mosabua/maven-android-sdk-deployer.git #installs Android JARs into the local maven repository
-cd maven-android-sdk-deployer && mvn clean install && cd ..
-git clone https://github.com/Macarse/robolectric.git
-cd robolectric && git checkout apacheVersion && mvn clean install -DskipTests && cd ..
-```
-
-Note that if you do not want to run tests on the SDK, make sure that you execute ```mvn clean install -DskipTests``` for your Maven builds.
-
-Also note that if you want to run tests, you must open StackMobTestCommon.java and replace the placeholder values with your app's values.
-
-## Forked Robolectric? What's up with that?
-The stock [Robolectric library](http://pivotal.github.com/robolectric/) completely mocks all HTTP requests, so with that library, the SDK cannot be tested against real StackMob servers while running inside the JVM. We want to do both, so we rely on [https://github.com/Macarse/robolectric](this version of Robolectric) which mocks everything except HTTP requests.
-
-We know this whole setup is far from ideal, and we're working on building a better way to test our SDK without mocking our HTTP requests. While we're working on a better solution, you should run normal (non-test) maven builds with ```-DskipTest``` so that you don't need to install custom Robolectric.
-
-## Copyright
+# Copyright
 
 Copyright 2011 StackMob
 

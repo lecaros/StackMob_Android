@@ -19,39 +19,18 @@
     <inceptionYear>2011</inceptionYear>
 
     <dependencies>
+    	<dependency>
+    		<groupId>com.stackmob</groupId>
+    		<artifactId>stackmob-java-client-sdk</artifactId>
+    		<version>0.1.1</version>
+    		<scope>compile</scope>
+		</dependency>
+    
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>1.7.1</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>oauth.signpost</groupId>
-            <artifactId>signpost-core</artifactId>
-            <version>1.2.1.1</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>oauth.signpost</groupId>
-            <artifactId>signpost-commonshttp4</artifactId>
-            <version>1.2.1.1</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.pivotallabs</groupId>
-            <artifactId>robolectric</artifactId>
-            <version>1.0-apache</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.9</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -66,6 +45,21 @@
             <artifactId>android-facebook</artifactId>
             <version>1.4</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+        	<groupId>oauth.signpost</groupId>
+        	<artifactId>signpost-core</artifactId>
+        	<version>1.2.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>oauth.signpost</groupId>
+        	<artifactId>signpost-commonshttp4</artifactId>
+        	<version>1.2.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.httpcomponents</groupId>
+        	<artifactId>httpclient</artifactId>
+        	<version>4.1.2</version>
         </dependency>
     </dependencies>
     

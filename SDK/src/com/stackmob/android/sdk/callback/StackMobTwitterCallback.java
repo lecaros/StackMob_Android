@@ -16,7 +16,7 @@
 
 package com.stackmob.android.sdk.callback;
 
-import com.stackmob.android.sdk.exception.StackMobException;
+import com.stackmob.sdk.exception.StackMobException;
 
 public interface StackMobTwitterCallback {
 
