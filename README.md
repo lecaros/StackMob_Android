@@ -196,7 +196,7 @@ stackmob.linkUserWithTwitterToken(twitterToken, twitterSecret, new StackMobCallb
 StackMob works with Google's C2DM service [http://code.google.com/android/c2dm](http://code.google.com/android/c2dm/). To get a C2DM registration ID, follow the instructions at [http://code.google.com/android/c2dm/#registering](http://code.google.com/android/c2dm/#registering). Then, in your handleRegistration method, include this line to register the new registrationID with your servers on StackMob:
 
 ```java
-stackmob.registerForPushWithUser(stackmobUsername, intent.getStringExtra("registration_id"), new StackMobCallback() {
+stackmob.registerForPushWithUser(stackmobUsername, registrationId, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
@@ -204,7 +204,9 @@ stackmob.registerForPushWithUser(stackmobUsername, intent.getStringExtra("regist
 });
 ```
 
-Note that you only should register a push notification token if you have a valid StackMob username. In the end, your C2DM registration code should look similar to the code in [this tutorial](http://www.vogella.de/articles/AndroidCloudToDeviceMessaging/article.html).
+Note that you only should register a push notification token if you have a valid StackMob username.
+
+Follow [these instructions](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push) to learn how to get a registration ID.
 
 # Contributing
 We encourage contributions to the StackMob SDK. To do so, fork this repository, make your changes and submit a pull request with your changes.
