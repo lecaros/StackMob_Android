@@ -37,6 +37,14 @@ If you don't use Maven, we have you covered as well:
 	2. Java Build Path -> Source -> Add Folder
 	3. select the stackmob-sdk_src folder
 
+### Manifest Setup
+After you've installed the SDK, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
+the top level of AndroidManifest.xml:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
 # Coding
 
 Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be familiar. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
