@@ -29,8 +29,13 @@ If you don't use Maven, we have you covered as well:
 
 1. download [this ZIP file](http://stackmob.github.com/StackMob_Android/downloads/0.0.1/StackMobDemo.zip)
 2. unzip StackMobDemo.zip
-3. in Eclipse, File -> Import -> General -> Existing Projects into Workspace
-4. select the StackMobDemo/SDK folder
+3. open your project in Eclipse
+4. File -> Import -> General -> Existing Projects into Workspace
+5. select the StackMobDemo/SDK folder
+6. ensure that the stackmob-sdk_src folder has been added in your project, and ensure that it's marked as a source folder. If it's not, follow these instructions:
+	1. right click on project -> properties
+	2. Java Build Path -> Source -> Add Folder
+	3. select the stackmob-sdk_src folder
 
 # Coding
 
@@ -208,8 +213,11 @@ Note that you only should register a push notification token if you have a valid
 
 Follow [these instructions](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push) to learn how to get a registration ID.
 
+#Reporting Issues
+We use Github to track issues with the SDK. If you find any issues, please report them [here](https://github.com/stackmob/StackMob_Android/issues), and include as many details as possible about the issue you encountered.
+
 # Contributing
-We encourage contributions to the StackMob SDK. To do so, fork this repository, make your changes and submit a pull request with your changes.
+We encourage contributions to the StackMob SDK. If you'd like to contribute, fork this repository, make your changes and submit a pull request with your changes.
 
 # Copyright
 
