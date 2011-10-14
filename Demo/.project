@@ -38,14 +38,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>stackmob-sdk_src</name>
+			<name>TwitterActivity_src</name>
 			<type>2</type>
-			<locationURI>_android_stackmob_sdk_86c32c65/src</locationURI>
-		</link>
-		<link>
-			<name>stackmob-sdk_tests</name>
-			<type>2</type>
-			<locationURI>_android_stackmob_sdk_86c32c65/tests</locationURI>
+			<locationURI>_android_TwitterActivity_4a8e9682/src</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
