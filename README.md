@@ -15,8 +15,8 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 7. Select all the JARs under TwitterActivity -> assets
 8. Click Ok.
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
-10. StackMob_Android/SDK/assets as the root directory
-11. click on assets and select all of the *.jar files
+10. Click browse and select StackMob_Android/SDK/assets as the root directory.
+11. Click on assets and select all of the *.jar files.
 
 ## Manifest Setup
 After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
@@ -26,7 +26,7 @@ the top level of AndroidManifest.xml:
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-# Coding
+# Making REST API Calls
 
 Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
