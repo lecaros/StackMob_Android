@@ -15,8 +15,8 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 7. Select all the JARs under TwitterActivity -> assets
 8. Click Ok.
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
-10. StackMob_Android/SDK/assets as the root directory
-11. click on assets and select all of the *.jar files
+10. Click browse and select StackMob_Android/SDK/assets as the root directory.
+11. Click on assets and select all of the *.jar files.
 
 ## Manifest Setup
 After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
