@@ -1,7 +1,11 @@
 # Stackmob Android SDK
 This is the Official Stackmob Android SDK. This SDK builds on top of [the StackMob Java Client SDK](https://github.com/stackmob/stackmob-java-client-sdk) to provide various convenience components for Android apps.
 
-# Getting Started
+# Getting Started - New App
+Getting started on a new Android App is as simple as opening both the SDK project and Demo project in Eclipse. Once you've done that, do your work in the demo app.
+
+# Getting Started - Existing App
+If you already have an app, follow these instructions to add the StackMob SDK to it.
 
 ## Installing the SDK
 Here's how to get set up with the SDK. These instructions assume you're using Eclipse for Android development.
