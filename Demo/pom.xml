@@ -19,7 +19,7 @@
 	<description>Stackmob Android SDK Demo App</description>
 	<inceptionYear>2011</inceptionYear>
 
-	<dependencies>
+	<dependencies>	
 	    <dependency>
 			<groupId>com.stackmob.android</groupId>
 		      <artifactId>stackmob-sdk</artifactId>

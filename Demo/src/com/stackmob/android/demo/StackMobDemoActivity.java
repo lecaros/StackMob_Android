@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.stackmob.android.sdk.common.StackMobCommon;
 
 public class StackMobDemoActivity extends Activity {
-	
+	private StackMob stackmob;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +22,7 @@ public class StackMobDemoActivity extends Activity {
 		StackMobCommon.API_SECRET = "YOUR_API_SECRET";
 		StackMobCommon.USER_OBJECT_NAME = "YOUR_USER_OBJECT_NAME";
 		StackMobCommon.API_VERSION = 0;
+		stackmob = StackMobCommon.getStackMobInstance();
 	}
 
 	public void buttonClick(View v) {
@@ -29,7 +30,7 @@ public class StackMobDemoActivity extends Activity {
 		params.put("username", "admin");
 		params.put("password", "1234");
 		
-		StackMobCommon.getStackMobInstance().login(params, new StackMobCallback() {
+		stackmob.login(params, new StackMobCallback() {
 			@Override
 			public void success(String responseBody) {
 				Toast.makeText(StackMobDemoActivity.this, "login response: " + responseBody, Toast.LENGTH_SHORT).show();

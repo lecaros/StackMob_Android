@@ -3,42 +3,23 @@ This is the Official Stackmob Android SDK. This SDK builds on top of [the StackM
 
 # Getting Started
 
-### With Maven
-Maven is the best way to get set up with the SDK. You can do so with this script:
+## Installing the SDK
+Here's how to get set up with the SDK. These instructions assume you're using Eclipse for Android development.
 
-```bash
-git clone git@github.com:stackmob/StackMob_Android.git
-cd StackMob_Android/SDK
-mvn clean install
-```
+1. ```git clone git@github.com:stackmob/StackMob_Android.git```
+2. Right click on your Eclipse project -> Import -> Existing Projects into Workspace -> Select Root Directory -> Browse
+3. Select StackMob_Android/SDK for the root directory. This should result in a new project in your workspace called "TwitterActivity".
+4. Right click on your your Eclipse project -> Build Path -> Configure Build Path -> Projects -> Add
+5. Select the TwitterActivity project
+6. Click on Libraries -> Add JARs
+7. Select all the JARs under TwitterActivity -> assets
+8. Click Ok.
+9. Right click on your project's assets directory -> Import -> General -> File System -> Next
+10. StackMob_Android/SDK/assets as the root directory
+11. click on assets and select all of the *.jar files
 
-Then, add this to your pom.xml file:
-
-```xml
-<dependency>
-    <groupId>com.stackmob.android</groupId>
-    <artifactId>stackmob-sdk</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <type>apklib</type>
-    <scope>compile</scope>
-</dependency>
-```
-
-### Without Maven
-If you don't use Maven, we have you covered as well:
-
-1. download [this ZIP file](http://stackmob.github.com/StackMob_Android/downloads/0.0.1/StackMobDemo.zip)
-2. unzip StackMobDemo.zip
-3. open your project in Eclipse
-4. File -> Import -> General -> Existing Projects into Workspace
-5. select the StackMobDemo/SDK folder
-6. ensure that the stackmob-sdk_src folder has been added in your project, and ensure that it's marked as a source folder. If it's not, follow these instructions:
-	1. right click on project -> properties
-	2. Java Build Path -> Source -> Add Folder
-	3. select the stackmob-sdk_src folder
-
-### Manifest Setup
-After you've installed the SDK, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
+## Manifest Setup
+After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
 the top level of AndroidManifest.xml:
 
 ```xml
@@ -47,7 +28,7 @@ the top level of AndroidManifest.xml:
 
 # Coding
 
-Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be familiar. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
+Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
 ```java
 import java.util.List;
