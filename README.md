@@ -26,7 +26,7 @@ the top level of AndroidManifest.xml:
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-# Coding
+# Making REST API Calls
 
 Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
