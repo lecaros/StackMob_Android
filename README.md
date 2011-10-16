@@ -206,7 +206,7 @@ Note that you only should register a push notification token if you have a valid
 
 Follow [these instructions](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push) to learn how to get a registration ID.
 
-#Reporting Issues
+# Reporting Issues
 We use Github to track issues with the SDK. If you find any issues, please report them [here](https://github.com/stackmob/StackMob_Android/issues), and include as many details as possible about the issue you encountered.
 
 # Contributing
