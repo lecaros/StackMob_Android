@@ -191,20 +191,9 @@ stackmob.linkUserWithTwitterToken(twitterToken, twitterSecret, new StackMobCallb
 ```
 
 ### Push Notifications
-StackMob works with Google's C2DM service [http://code.google.com/android/c2dm](http://code.google.com/android/c2dm/). To get a C2DM registration ID, follow the instructions at [http://code.google.com/android/c2dm/#registering](http://code.google.com/android/c2dm/#registering). Then, in your handleRegistration method, include this line to register the new registrationID with your servers on StackMob:
+StackMob works with Google's C2DM service [http://code.google.com/android/c2dm](http://code.google.com/android/c2dm/) to do push notifications on Android. For a complete overview on how to set up push, check out the [StackMob  Push Docs](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push).
 
-```java
-stackmob.registerForPushWithUser(stackmobUsername, registrationId, new StackMobCallback() {
-    @Override
-    public void success(String responseBody) {}
-    @Override
-    public void failure(StackMobException e) {}
-});
-```
-
-Note that you only should register a push notification token if you have a valid StackMob username.
-
-Follow [these instructions](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push) to learn how to get a registration ID.
+Also, the [stackmob-java-client-sdk](https://github.com/stackmob/stackmob-java-client-sdk) fully supports the [StackMob REST API for Push](http://stackmob.github.com/stackmob-java-client-sdk/javadoc/0.1.4/apidocs/), so the StackMob Android SDK has full access to those APIs.
 
 # Reporting Issues
 We use Github to track issues with the SDK. If you find any issues, please report them [here](https://github.com/stackmob/StackMob_Android/issues), and include as many details as possible about the issue you encountered.
