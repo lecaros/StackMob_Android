@@ -4,9 +4,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import com.stackmob.android.sdk.common.StackMobCommon;
+import com.stackmob.sdk.api.StackMob;
+import com.stackmob.sdk.callback.StackMobCallback;
+import com.stackmob.sdk.exception.StackMobException;
+
 
 public class C2DMRegistrationReceiver extends BroadcastReceiver {
 	private static final String TAG = C2DMRegistrationReceiver.class.getCanonicalName();
+	private static final String USERNAME = "TEST_USER";
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -15,8 +21,13 @@ public class C2DMRegistrationReceiver extends BroadcastReceiver {
 			final String registrationId = intent.getStringExtra("registration_id");
 			final String error = intent.getStringExtra("error");
 			Log.i(TAG, "Received registration ID " + registrationId + " with error " + error);
-			//in your production app, send this registration ID to StackMob for storage using the
-			//register_device_token_universal API call
+			
+			//send the registrationID to StackMob
+			String receiver = context.getPackageName() + ".C2DMRegistrationIDSender";
+			intent.setClassName(context, receiver);
+			intent.putExtra("registrationID", registrationId);
+			intent.putExtra("username", USERNAME);
+			context.startService(intent);
 		}
 	}
 }

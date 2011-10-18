@@ -32,6 +32,9 @@
     			<category android:name="com.stackmob.android.demo" />
     		</intent-filter>
     	</receiver>
+
+		<!-- the service that sends registration IDs to the StackMob server -->    	
+    	<service android:name=".C2DMRegistrationIDSender" />
     	
     </application>    
 </manifest>

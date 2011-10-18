@@ -28,9 +28,7 @@ public class StackMobDemoActivity extends Activity {
 		StackMobCommon.API_SECRET = "YOUR_API_SECRET";
 		StackMobCommon.USER_OBJECT_NAME = "YOUR_USER_OBJECT_NAME";
 		StackMobCommon.API_VERSION = 0;
-		Log.i(TAG, "registering for C2DM");
 		registerForC2DM();
-		Log.i(TAG, "done registering for C2DM");
 	}
 	
 	private void registerForC2DM() {
