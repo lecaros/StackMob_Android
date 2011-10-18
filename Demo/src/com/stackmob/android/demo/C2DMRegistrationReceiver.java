@@ -22,6 +22,10 @@ public class C2DMRegistrationReceiver extends BroadcastReceiver {
 			final String error = intent.getStringExtra("error");
 			Log.i(TAG, "Received registration ID " + registrationId + " with error " + error);
 			
+			//store the registration ID locally
+			C2DMRegistrationIDHolder holder = new C2DMRegistrationIDHolder(context);
+			holder.setID(registrationId);
+			
 			//send the registrationID to StackMob
 			String receiver = context.getPackageName() + ".C2DMRegistrationIDSender";
 			intent.setClassName(context, receiver);

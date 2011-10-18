@@ -18,6 +18,7 @@ import android.content.Intent;
 public class StackMobDemoActivity extends Activity {
 	private StackMob stackmob;
 	private static final String TAG = StackMobDemoActivity.class.getCanonicalName();
+	private static final String registrationIDKey = "registrationID";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,19 @@ public class StackMobDemoActivity extends Activity {
 		StackMobCommon.API_SECRET = "YOUR_API_SECRET";
 		StackMobCommon.USER_OBJECT_NAME = "YOUR_USER_OBJECT_NAME";
 		StackMobCommon.API_VERSION = 0;
-		registerForC2DM();
+		C2DMRegistrationIDHolder regHolder = new C2DMRegistrationIDHolder(this);
+		if(regHolder.hasID()) {
+			try {
+				Log.i(TAG, "registration ID " + regHolder.getID() + " was already stored in shared prefs");
+			}
+			catch (C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+				Log.e(TAG, "failed to get registration ID from shared prefs, even though shared prefs reports that it's there" , e);
+			}
+		}
+		else {
+			Log.i(TAG, "registration ID was not already stored in shared prefs. fetching a new one and saving it");
+			registerForC2DM();
+		}		
 	}
 	
 	private void registerForC2DM() {
