@@ -38,9 +38,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>TwitterActivity_src</name>
+			<name>SDK_src</name>
 			<type>2</type>
-			<locationURI>_android_TwitterActivity_4a8e9682/src</locationURI>
+			<location>/Users/aaron/code/StackMob_Android/SDK/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
