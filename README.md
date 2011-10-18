@@ -13,14 +13,14 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 1. ```git clone git@github.com:stackmob/StackMob_Android.git```
 2. Right click on your Eclipse project -> Import -> Existing Projects into Workspace -> Select Root Directory -> Browse
 3. Select StackMob_Android/SDK for the root directory. This should result in a new project in your workspace called "TwitterActivity".
-4. Right click on your your Eclipse project -> Build Path -> Configure Build Path -> Projects -> Add
-5. Select the TwitterActivity project
+4. Right click on your your Eclipse project -> Build Path -> Link Source -> Browse
+5. Select StackMob_Android/SDK/src, enter "SDK_src" under Folder Name and click Finish
 6. Click on Libraries -> Add JARs
 7. Select all the JARs under TwitterActivity -> assets
 8. Click Ok.
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
 10. Click browse and select StackMob_Android/SDK/assets as the root directory.
-11. Click on assets and select all of the *.jar files.
+11. Click on assets, select all of the *.jar files, and click Finish
 
 ## Manifest Setup
 After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
