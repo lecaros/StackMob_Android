@@ -144,6 +144,14 @@ stackmob.delete("game", "charades", new StackMobCallback() {
 });
 ```
 
+### Advanced Queries
+
+**Additional advanced queries are available in the Java Client SDK docs**
+
+The Android SDK is built upon the <a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
+
+<a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to **perform range queries**, **query for multiple values**, **expand relationships**, and more in the Java Client SDK docs.</a>
+
 ### Facebook Registration
 Register a new user with a Facebook token:
 
