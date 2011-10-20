@@ -20,15 +20,9 @@ import com.stackmob.android.sdk.common.StackMobCommon;
 import com.stackmob.sdk.api.StackMob;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
-
-import android.app.AlarmManager;
 import android.app.IntentService;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.os.PowerManager;
 import android.util.Log;
-
 
 public class C2DMRegistrationIDSender extends IntentService {
 	private static final String TAG = C2DMRegistrationIDSender.class.getCanonicalName();

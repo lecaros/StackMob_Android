@@ -20,11 +20,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import com.stackmob.android.sdk.common.StackMobCommon;
-import com.stackmob.sdk.api.StackMob;
-import com.stackmob.sdk.callback.StackMobCallback;
-import com.stackmob.sdk.exception.StackMobException;
-
 
 public class C2DMRegistrationReceiver extends BroadcastReceiver {
 	private static final String TAG = C2DMRegistrationReceiver.class.getCanonicalName();

@@ -4,8 +4,6 @@ bin
 *.class
 *~
 gen
-.settings
-.classpath
 target
 
 tmp

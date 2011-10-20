@@ -34,7 +34,6 @@ import android.content.Intent;
 public class StackMobDemoActivity extends Activity {
 	private StackMob stackmob;
 	private static final String TAG = StackMobDemoActivity.class.getCanonicalName();
-	private static final String registrationIDKey = "registrationID";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
