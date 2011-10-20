@@ -16,6 +16,7 @@
 
 package com.stackmob.android.demo;
 
+import java.util.Map;
 import java.util.HashMap;
 
 import com.stackmob.sdk.api.StackMob;
@@ -67,10 +68,9 @@ public class StackMobDemoActivity extends Activity {
 	}
 	
 	public void buttonClick(View v) {
-		HashMap<String, Object> params = new HashMap<String, Object>();
+		Map<String, String> params = new HashMap<String, String>();
 		params.put("username", "admin");
 		params.put("password", "1234");
-		
 		stackmob.login(params, new StackMobCallback() {
 			@Override
 			public void success(String responseBody) {
