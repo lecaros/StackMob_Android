@@ -1,7 +1,8 @@
 # Stackmob Android SDK
-This is the Official Stackmob Android SDK. This SDK builds on top of [the StackMob Java Client SDK](https://github.com/stackmob/stackmob-java-client-sdk) to provide various convenience components for Android apps.
+This is the Official Stackmob Android SDK. This SDK builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components for Android apps.
 
 # Getting Started - New App
+
 Getting started on a new Android App is as simple as opening both the SDK and Demo projects in Eclipse, and doing your work in the Demo project.
 
 # Getting Started - Existing App
@@ -32,7 +33,7 @@ the top level of AndroidManifest.xml:
 
 # Making REST API Calls
 
-Since this SDK uses the [java client SDK](https://github.com/stackmob/stackmob-java-client-sdk), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
+Since this SDK uses the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
 ```java
 import java.util.List;
@@ -144,6 +145,14 @@ stackmob.delete("game", "charades", new StackMobCallback() {
 });
 ```
 
+### Advanced Queries
+
+**Additional advanced queries are available in the Java Client SDK docs**
+
+The Android SDK is built upon the <a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
+
+<a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to **perform range queries**, **query for multiple values**, **expand relationships**, and more in the Java Client SDK docs.</a>
+
 ### Facebook Registration
 Register a new user with a Facebook token:
 
@@ -193,7 +202,7 @@ stackmob.linkUserWithTwitterToken(twitterToken, twitterSecret, new StackMobCallb
 ### Push Notifications
 StackMob works with Google's C2DM service [http://code.google.com/android/c2dm](http://code.google.com/android/c2dm/) to do push notifications on Android. For a complete overview on how to set up push, check out the [StackMob  Push Docs](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started-with-Android-Push).
 
-Also, the [stackmob-java-client-sdk](https://github.com/stackmob/stackmob-java-client-sdk) fully supports the [StackMob REST API for Push](http://stackmob.github.com/stackmob-java-client-sdk/javadoc/0.1.4/apidocs/), so the StackMob Android SDK has full access to those APIs.
+Also, the [stackmob-java-client-sdk](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) fully supports the [StackMob REST API for Push](http://stackmob.github.com/stackmob-java-client-sdk/javadoc/0.1.4/apidocs/), so the StackMob Android SDK has full access to those APIs.
 
 # Reporting Issues
 We use Github to track issues with the SDK. If you find any issues, please report them [here](https://github.com/stackmob/StackMob_Android/issues), and include as many details as possible about the issue you encountered.
