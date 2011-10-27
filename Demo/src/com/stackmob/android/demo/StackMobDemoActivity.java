@@ -18,10 +18,13 @@ package com.stackmob.android.demo;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 import com.stackmob.sdk.api.StackMob;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
+import com.stackmob.sdk.push.StackMobPushToken;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -37,6 +40,14 @@ import android.content.Context;
 public class StackMobDemoActivity extends Activity {
 	private StackMob stackmob;
 	private static final String TAG = StackMobDemoActivity.class.getCanonicalName();
+	private final StackMobCallback standardToastCallback = new StackMobCallback() {
+		@Override public void success(String responseBody) {
+			threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
+		}
+		@Override public void failure(StackMobException e) {
+			threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
+		}
+	};
 	
 	public StackMobDemoActivity() {
 		StackMobCommon.API_KEY = "8bce5b97-6018-4993-a690-4cc034aa2bfe";
@@ -65,13 +76,62 @@ public class StackMobDemoActivity extends Activity {
 			registerForC2DM();
 		}		
 	}
+
+	public void loginClick(View v) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", getUsername());
+		params.put("password", getPassword());
+		stackmob.login(params, standardToastCallback);
+	}
+	
+	public void createUserClick(View v) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", getUsername());
+		params.put("password", getPassword());
+		stackmob.post("user", params, standardToastCallback);
+	}
+	
+	public void registerRegTokenClick(View w) {
+		try {
+			final String username = getPushUsername();
+			final String registrationID = getRegistrationIDHolder().getID();
+			stackmob.registerForPushWithUser(username, registrationID, standardToastCallback);
+		}
+		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
+		}
+		
+	}
+	
+	public void sendPushClick(View w) {
+		try {
+			final Map<String, String> payload = new HashMap<String, String>();
+			payload.put("payload", getPushPayload());
+			final List<StackMobPushToken> tokens = new ArrayList<StackMobPushToken>();
+			tokens.add(new StackMobPushToken(getRegistrationIDHolder().getID(), StackMobPushToken.TokenType.Android));
+			stackmob.pushToTokens(payload, tokens, standardToastCallback);
+		}
+		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
+		}
+	}
+	
+	public void getRegTokenClick(View w) {
+		try {
+			threadAgnosticToast(StackMobDemoActivity.this, getRegistrationIDHolder().getID(), Toast.LENGTH_SHORT);
+		}
+		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
+		}
+	}
 	
 	private C2DMRegistrationIDHolder getRegistrationIDHolder() {
 		return new C2DMRegistrationIDHolder(StackMobDemoActivity.this);
 	}
+	
 	private void registerForC2DM() {
 		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
-		intent.putExtra("app",PendingIntent.getBroadcast(this, 0, new Intent(), 0));
+		intent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
 		intent.putExtra("sender", "aaron@stackmob.com");
 		startService(intent);
 	}
@@ -84,12 +144,28 @@ public class StackMobDemoActivity extends Activity {
 		return (EditText)findViewById(R.id.password);
 	}
 	
+	private EditText getPushUsernameField() {
+		return (EditText)findViewById(R.id.push_username);
+	}
+	
 	private String getUsername() {
 		return getUsernameField().getText().toString();
 	}
 	
+	private String getPushUsername() {
+		return getPushUsernameField().getText().toString();
+	}
+	
 	private String getPassword() {
 		return getPasswordField().getText().toString();
+	}
+	
+	private EditText getPushPayloadField() {
+		return (EditText)findViewById(R.id.token_username);
+	}
+	
+	private String getPushPayload() {
+		return getPushPayloadField().getText().toString();
 	}
 	
 	private void threadAgnosticToast(final Context ctx, final String txt, final int duration) {
@@ -98,51 +174,5 @@ public class StackMobDemoActivity extends Activity {
 				Toast.makeText(ctx, txt, duration).show();
 			}
 		});
-	}
-	
-	public void loginClick(View v) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("username", getUsername());
-		params.put("password", getPassword());
-		stackmob.login(params, new StackMobCallback() {
-			@Override public void success(String responseBody) {
-				threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
-			}
-			@Override public void failure(StackMobException e) {
-				threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
-			}
-		});
-	}
-	
-	public void createUserClick(View v) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("username", getUsername());
-		params.put("password", getPassword());
-		stackmob.post("user", params, new StackMobCallback() {
-			@Override public void success(String responseBody) {
-				threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
-			}
-			@Override public void failure(StackMobException e) {
-				threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
-			}
-		});
-	}
-	
-	public void registerRegTokenClick(View w) {
-		threadAgnosticToast(StackMobDemoActivity.this, "not yet implemented", Toast.LENGTH_SHORT);
-	}
-	
-	public void sendPushClick(View w) {
-		threadAgnosticToast(StackMobDemoActivity.this, "not yet implemented", Toast.LENGTH_SHORT);
-		
-	}
-	
-	public void getRegTokenClick(View w) {
-		try {
-			threadAgnosticToast(StackMobDemoActivity.this, getRegistrationIDHolder().getID(), Toast.LENGTH_SHORT);
-		}
-		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
-			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
-		}
 	}
 }
