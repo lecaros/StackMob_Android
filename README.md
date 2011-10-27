@@ -11,7 +11,7 @@ If you already have an app, follow these instructions to add the StackMob SDK to
 ## Installing the SDK
 Here's how to get set up with the SDK. These instructions assume you're using Eclipse for Android development.
 
-1. 'git://github.com/stackmob/StackMob_Android.git'
+1. git://github.com/stackmob/StackMob_Android.git
 2. Right click on your Eclipse project -> Import -> Existing Projects into Workspace -> Select Root Directory -> Browse
 3. Select StackMob_Android/SDK for the root directory. This should result in a new project in your workspace called "TwitterActivity".
 4. Right click on your your Eclipse project -> Build Path -> Link Source -> Browse
