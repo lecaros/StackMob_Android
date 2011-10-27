@@ -27,24 +27,30 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.EditText;
 import com.stackmob.android.sdk.common.StackMobCommon;
 import android.util.Log;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.Context;
 
 public class StackMobDemoActivity extends Activity {
 	private StackMob stackmob;
 	private static final String TAG = StackMobDemoActivity.class.getCanonicalName();
 	
+	public StackMobDemoActivity() {
+		StackMobCommon.API_KEY = "8bce5b97-6018-4993-a690-4cc034aa2bfe";
+		StackMobCommon.API_SECRET = "c2227f24-7ad5-452f-8669-4a4a454c8fe4";
+		StackMobCommon.USER_OBJECT_NAME = "user";
+		StackMobCommon.API_VERSION = 0;
+		stackmob = StackMobCommon.getStackMobInstance();
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		stackmob = StackMobCommon.getStackMobInstance();
 		setContentView(R.layout.main);
-		StackMobCommon.API_KEY = "YOUR_API_KEY";
-		StackMobCommon.API_SECRET = "YOUR_API_SECRET";
-		StackMobCommon.USER_OBJECT_NAME = "YOUR_USER_OBJECT_NAME";
-		StackMobCommon.API_VERSION = 0;
+		
 		C2DMRegistrationIDHolder regHolder = new C2DMRegistrationIDHolder(this);
 		if(regHolder.hasID()) {
 			try {
@@ -60,26 +66,83 @@ public class StackMobDemoActivity extends Activity {
 		}		
 	}
 	
+	private C2DMRegistrationIDHolder getRegistrationIDHolder() {
+		return new C2DMRegistrationIDHolder(StackMobDemoActivity.this);
+	}
 	private void registerForC2DM() {
 		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
 		intent.putExtra("app",PendingIntent.getBroadcast(this, 0, new Intent(), 0));
 		intent.putExtra("sender", "aaron@stackmob.com");
 		startService(intent);
 	}
+
+	private EditText getUsernameField() {
+		return (EditText)findViewById(R.id.username);
+	}
 	
-	public void buttonClick(View v) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("username", "admin");
-		params.put("password", "1234");
-		stackmob.login(params, new StackMobCallback() {
-			@Override
-			public void success(String responseBody) {
-				Toast.makeText(StackMobDemoActivity.this, "login response: " + responseBody, Toast.LENGTH_SHORT).show();
-			}
-			@Override
-			public void failure(StackMobException e) {
-				Toast.makeText(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+	private EditText getPasswordField() {
+		return (EditText)findViewById(R.id.password);
+	}
+	
+	private String getUsername() {
+		return getUsernameField().getText().toString();
+	}
+	
+	private String getPassword() {
+		return getPasswordField().getText().toString();
+	}
+	
+	private void threadAgnosticToast(final Context ctx, final String txt, final int duration) {
+		runOnUiThread(new Runnable() {
+			@Override public void run() {
+				Toast.makeText(ctx, txt, duration).show();
 			}
 		});
+	}
+	
+	public void loginClick(View v) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", getUsername());
+		params.put("password", getPassword());
+		stackmob.login(params, new StackMobCallback() {
+			@Override public void success(String responseBody) {
+				threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
+			}
+			@Override public void failure(StackMobException e) {
+				threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
+			}
+		});
+	}
+	
+	public void createUserClick(View v) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", getUsername());
+		params.put("password", getPassword());
+		stackmob.post("user", params, new StackMobCallback() {
+			@Override public void success(String responseBody) {
+				threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
+			}
+			@Override public void failure(StackMobException e) {
+				threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
+			}
+		});
+	}
+	
+	public void registerRegTokenClick(View w) {
+		threadAgnosticToast(StackMobDemoActivity.this, "not yet implemented", Toast.LENGTH_SHORT);
+	}
+	
+	public void sendPushClick(View w) {
+		threadAgnosticToast(StackMobDemoActivity.this, "not yet implemented", Toast.LENGTH_SHORT);
+		
+	}
+	
+	public void getRegTokenClick(View w) {
+		try {
+			threadAgnosticToast(StackMobDemoActivity.this, getRegistrationIDHolder().getID(), Toast.LENGTH_SHORT);
+		}
+		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
+			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
+		}
 	}
 }

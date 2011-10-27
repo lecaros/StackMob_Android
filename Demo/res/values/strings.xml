@@ -2,4 +2,7 @@
 <resources>
     <string name="hello">Hello World, StackMobDemoActivity!</string>
     <string name="app_name">StackMobDemo</string>
+    <string name="username_field">Username</string>
+    <string name="password_field">Password</string>
+    <string name="data_field">Push Data</string>
 </resources>
