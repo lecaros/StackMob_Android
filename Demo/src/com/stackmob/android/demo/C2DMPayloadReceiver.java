@@ -28,8 +28,7 @@ public class C2DMPayloadReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
 		if ("com.google.android.c2dm.intent.RECEIVE".equals(action)) {
-			final String payload = intent.getStringExtra("payload");
-			Log.d(TAG, "Got C2dM Payload: " + payload);
+			Log.d(TAG, "Got C2DM message");
 		}
 	}
 
