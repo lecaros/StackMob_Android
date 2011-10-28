@@ -43,17 +43,25 @@ public class StackMobDemoActivity extends Activity {
 	private final StackMobCallback standardToastCallback = new StackMobCallback() {
 		@Override public void success(String responseBody) {
 			threadAgnosticToast(StackMobDemoActivity.this, "response: " + responseBody, Toast.LENGTH_SHORT);
+			Log.i(TAG, "request succeeded with " + responseBody);
 		}
 		@Override public void failure(StackMobException e) {
 			threadAgnosticToast(StackMobDemoActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT);
+			Log.i(TAG, "request had exception " + e.getMessage());
 		}
 	};
 	
 	public StackMobDemoActivity() {
-		StackMobCommon.API_KEY = "8bce5b97-6018-4993-a690-4cc034aa2bfe";
-		StackMobCommon.API_SECRET = "c2227f24-7ad5-452f-8669-4a4a454c8fe4";
+		//prod
+		//StackMobCommon.API_KEY = "8bce5b97-6018-4993-a690-4cc034aa2bfe";
+		//StackMobCommon.API_SECRET = "c2227f24-7ad5-452f-8669-4a4a454c8fe4";
+		//dev
+		StackMobCommon.API_KEY = "46de9cb5-d49e-4fcb-a5db-5b8582b81e19";
+		StackMobCommon.API_SECRET = "6986750c-67de-4dea-ab4b-15ba296058c8";
 		StackMobCommon.USER_OBJECT_NAME = "user";
 		StackMobCommon.API_VERSION = 0;
+		StackMobCommon.API_URL_FORMAT = "127.0.0.1:9090";
+		StackMobCommon.PUSH_API_URL_FORMAT = "127.0.0.1:9191";
 		stackmob = StackMobCommon.getStackMobInstance();
 	}
 	
@@ -123,6 +131,11 @@ public class StackMobDemoActivity extends Activity {
 		catch(C2DMRegistrationIDHolder.NoStoredRegistrationIDException e) {
 			threadAgnosticToast(StackMobDemoActivity.this, "no registration ID currently stored", Toast.LENGTH_SHORT);
 		}
+	}
+	
+	public void forceGetRegTokenClick(View w) {
+		registerForC2DM();
+		threadAgnosticToast(StackMobDemoActivity.this, "sent intent to get reg ID", Toast.LENGTH_SHORT);
 	}
 	
 	private C2DMRegistrationIDHolder getRegistrationIDHolder() {
