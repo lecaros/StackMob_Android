@@ -52,12 +52,8 @@ public class StackMobDemoActivity extends Activity {
 	};
 	
 	public StackMobDemoActivity() {
-		//prod
-		//StackMobCommon.API_KEY = "8bce5b97-6018-4993-a690-4cc034aa2bfe";
-		//StackMobCommon.API_SECRET = "c2227f24-7ad5-452f-8669-4a4a454c8fe4";
-		//dev
-		StackMobCommon.API_KEY = "46de9cb5-d49e-4fcb-a5db-5b8582b81e19";
-		StackMobCommon.API_SECRET = "6986750c-67de-4dea-ab4b-15ba296058c8";
+		StackMobCommon.API_KEY = "YOUR_API_KEY_HERE";
+		StackMobCommon.API_SECRET = "YOUR_API_SECRET_HERE";
 		StackMobCommon.USER_OBJECT_NAME = "user";
 		StackMobCommon.API_VERSION = 0;
 		StackMobCommon.API_URL_FORMAT = "127.0.0.1:9090";
