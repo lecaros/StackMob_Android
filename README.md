@@ -1,5 +1,5 @@
 # Stackmob Android SDK
-This is the Official Stackmob Android SDK. This SDK builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components specifically for Android apps.
+This is the Official Stackmob Android SDK. It builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components specifically for Android apps. The SDK aims to provide compatability for Android 2.2 and above.
 
 # Getting Started - New App
 
