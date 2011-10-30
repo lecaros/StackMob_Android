@@ -70,7 +70,6 @@ import java.util.ArrayList;
 
 StackMobCommon.API_KEY = …;
 StackMobCommon.API_SECRET = …;
-StackMobCommon.API_SECRET = …;
 StackMobCommon.USER_OBJECT_NAME = …; //change this if you have a user object in your object model of a different name
 StackMobCommon.API_VERSION = …; //0 for Sandbox, >0 for deployed
 StackMob stackmob = StackMobCommon.getStackMobInstance();
@@ -109,7 +108,7 @@ stackmob.post("game", game, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
-    public void failure(StackMobException) {}
+    public void failure(StackMobException e) {}
 });
 ```
 
