@@ -1,5 +1,5 @@
 # Stackmob Android SDK
-This is the Official Stackmob Android SDK. This SDK builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components for Android apps.
+This is the Official Stackmob Android SDK. It builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components specifically for Android apps. The SDK aims to provide compatability for Android 2.2 and above.
 
 # Getting Started - New App
 
@@ -22,6 +22,25 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
 10. Click browse and select StackMob_Android/SDK/assets as the root directory.
 11. Click on assets, select all of the *.jar files, and click Finish
+
+If you instead wish to use IntelliJ IDEA for Android development, follow these steps:
+
+1. Clone or download git://github.com/stackmob/StackMob_Android.git
+2. In IntelliJ, open your Android application project, or create a new one.
+3. Select File -> New Module -> Create new module from scratch
+4. For the location of the project files, enter the path to StackMob_Android/SDK, which you downloaded earlier.
+5. Click next. IntelliJ should find the source directories.
+6. Click next, and Uncheck "Create default Android application structure"
+7. Select Finish
+8. Right click on the new SDK module and select "Module settings", and go to the dependencies tab
+9. Select Add... -> Library -> New Library... -> Attach Jar Files
+10. Choose the assets folder in the SDK directory and apply changes
+11. In the same dialog, go to the module for your application, and select the dependencies tab
+12. Select Add... -> Module Dependency and select the SDK Module
+13. Save your changes
+
+Please note that IntelliJ support is currently experimental. Please let us know if you encounter any issues using IntelliJ with the StackMob Android SDK.
+
 
 ## Manifest Setup
 After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
@@ -70,7 +89,6 @@ import java.util.ArrayList;
 
 StackMobCommon.API_KEY = …;
 StackMobCommon.API_SECRET = …;
-StackMobCommon.API_SECRET = …;
 StackMobCommon.USER_OBJECT_NAME = …; //change this if you have a user object in your object model of a different name
 StackMobCommon.API_VERSION = …; //0 for Sandbox, >0 for deployed
 StackMob stackmob = StackMobCommon.getStackMobInstance();
@@ -109,7 +127,7 @@ stackmob.post("game", game, new StackMobCallback() {
     @Override
     public void success(String responseBody) {}
     @Override
-    public void failure(StackMobException) {}
+    public void failure(StackMobException e) {}
 });
 ```
 
