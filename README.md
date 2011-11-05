@@ -96,6 +96,8 @@ StackMob stackmob = StackMobCommon.getStackMobInstance();
 
 ### GET
 
+<span class="snippet" title="Android GET"/>
+
 ```java
 //get the game object for tic tac toe
 
@@ -114,7 +116,11 @@ stackmob.get("Game", arguments, new StackMobCallback() {
 });
 ```
 
+<span class="snippet"/>
+
 ### POST
+
+<span class="snippet" title="Android POST"/>
 
 ```java
 //create a new game object for charades
@@ -131,7 +137,11 @@ stackmob.post("game", game, new StackMobCallback() {
 });
 ```
 
+<span class="snippet"/>
+
 ### PUT
+
+<span class="snippet" title="Android POST"/>
 
 ```java
 //add a player to the charades game
@@ -150,7 +160,11 @@ stackmob.put("game", "charades", newGame, new StackMobCallback() {
 });
 ```
 
+<span class="snippet"/>
+
 ### DELETE
+
+<span class="snippet" title="Android DELETE"/>
 
 ```java
 //cancel the charades game
@@ -162,6 +176,8 @@ stackmob.delete("game", "charades", new StackMobCallback() {
     public void failure(StackMobException e) {}
 });
 ```
+
+<span class="snippet"/>
 
 ### Advanced Queries
 
