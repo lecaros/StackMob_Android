@@ -3,12 +3,14 @@ This is the Official Stackmob Android SDK. It builds on top of the [StackMob Jav
 
 # Getting Started - New App
 
+<span class="snippet" title="androidsetup"/>
+
 Getting started on a new Android App is as simple as opening both the SDK and Demo projects in Eclipse, and doing your work in the Demo project.
 
 # Getting Started - Existing App
 If you already have an app, follow these instructions to add the StackMob SDK to it.
 
-## Installing the SDK
+## Installing the SDK in Eclipse
 Here's how to get set up with the SDK. These instructions assume you're using Eclipse for Android development.
 
 1. git://github.com/stackmob/StackMob_Android.git
@@ -22,6 +24,18 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
 10. Click browse and select StackMob_Android/SDK/assets as the root directory.
 11. Click on assets, select all of the *.jar files, and click Finish
+
+## Manifest Setup
+After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
+the top level of AndroidManifest.xml:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+<span class="snippet"/>
+
+## Optional: Using IntelliJ 
 
 If you instead wish to use IntelliJ IDEA for Android development, follow these steps:
 
@@ -38,17 +52,10 @@ If you instead wish to use IntelliJ IDEA for Android development, follow these s
 11. In the same dialog, go to the module for your application, and select the dependencies tab
 12. Select Add... -> Module Dependency and select the SDK Module
 13. Save your changes
+14. Setup your Manifest as mentioned above.
 
 Please note that IntelliJ support is currently experimental. Please let us know if you encounter any issues using IntelliJ with the StackMob Android SDK.
 
-
-## Manifest Setup
-After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
-the top level of AndroidManifest.xml:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-```
 
 # Making REST API Calls
 
