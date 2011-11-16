@@ -1,8 +1,6 @@
 # Stackmob Android SDK
 This is the Official Stackmob Android SDK. It builds on top of the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK) to provide various convenience components specifically for Android apps. The SDK aims to provide compatability for Android 2.2 and above.
 
-<span class="snippet" title="androidsetup"/>
-
 # Getting Started - New App
 
 Getting started on a new Android App is as simple as opening both the SDK and Demo projects in Eclipse, and doing your work in the Demo project.
@@ -32,8 +30,6 @@ the top level of AndroidManifest.xml:
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-
-<span class="snippet"/>
 
 ## Optional: Using IntelliJ 
 
