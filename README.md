@@ -15,7 +15,7 @@ Here's how to get set up with the SDK. These instructions assume you're using Ec
 2. Right click on your Eclipse project -> Import -> Existing Projects into Workspace -> Select Root Directory -> Browse
 3. Select StackMob_Android/SDK for the root directory. This should result in a new project in your workspace called "TwitterActivity".
 4. Right click on your your Eclipse project -> Build Path -> Link Source -> Browse
-5. Select StackMob_Android/SDK/src, enter "SDK_src" under Folder Name and click Finish
+5. Select StackMob_Android/SDK/src, enter "SDKsrc" (no slash) under Folder Name and click Finish
 6. Click on Libraries -> Add JARs
 7. Select all the JARs under TwitterActivity -> assets
 8. Click Ok.
