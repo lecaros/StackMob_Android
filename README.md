@@ -31,7 +31,7 @@ the top level of AndroidManifest.xml:
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## Optional: Using IntelliJ 
+## Experimental: Using IntelliJ 
 
 If you instead wish to use IntelliJ IDEA for Android development, follow these steps:
 
