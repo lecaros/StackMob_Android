@@ -55,7 +55,7 @@ Please note that IntelliJ support is currently experimental. Please let us know 
 
 # Making REST API Calls
 
-Since this SDK uses the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
+Since this SDK uses the [StackMob Java Client SDK](http://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
 ```java
 import java.util.List;
@@ -186,9 +186,9 @@ stackmob.delete("game", "charades", new StackMobCallback() {
 
 **Additional advanced queries are available in the Java Client SDK docs**
 
-The Android SDK is built upon the <a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
+The Android SDK is built upon the <a href="http://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
 
-<a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to **perform range queries**, **query for multiple values**, **expand relationships**, and more in the Java Client SDK docs.</a>
+<b><a href="https://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to perform range queries, query for multiple values, expand relationships, and more in the Java Client SDK docs.</a></b>
 
 ### Facebook Registration
 Register a new user with a Facebook token:
