@@ -8,20 +8,30 @@ Getting started on a new Android App is as simple as opening both the SDK and De
 # Getting Started - Existing App
 If you already have an app, follow these instructions to add the StackMob SDK to it.
 
-## Installing the SDK
+## Installing the SDK in Eclipse
 Here's how to get set up with the SDK. These instructions assume you're using Eclipse for Android development.
 
 1. git://github.com/stackmob/StackMob_Android.git
 2. Right click on your Eclipse project -> Import -> Existing Projects into Workspace -> Select Root Directory -> Browse
 3. Select StackMob_Android/SDK for the root directory. This should result in a new project in your workspace called "TwitterActivity".
 4. Right click on your your Eclipse project -> Build Path -> Link Source -> Browse
-5. Select StackMob_Android/SDK/src, enter "SDK_src" under Folder Name and click Finish
+5. Select StackMob_Android/SDK/src, enter "SDKsrc" (no slash) under Folder Name and click Finish
 6. Click on Libraries -> Add JARs
 7. Select all the JARs under TwitterActivity -> assets
 8. Click Ok.
 9. Right click on your project's assets directory -> Import -> General -> File System -> Next
 10. Click browse and select StackMob_Android/SDK/assets as the root directory.
 11. Click on assets, select all of the *.jar files, and click Finish
+
+## Manifest Setup
+After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
+the top level of AndroidManifest.xml:
+
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+## Experimental: Using IntelliJ 
 
 If you instead wish to use IntelliJ IDEA for Android development, follow these steps:
 
@@ -38,21 +48,14 @@ If you instead wish to use IntelliJ IDEA for Android development, follow these s
 11. In the same dialog, go to the module for your application, and select the dependencies tab
 12. Select Add... -> Module Dependency and select the SDK Module
 13. Save your changes
+14. Setup your Manifest as mentioned above.
 
 Please note that IntelliJ support is currently experimental. Please let us know if you encounter any issues using IntelliJ with the StackMob Android SDK.
 
 
-## Manifest Setup
-After you've installed the SDK & installed all of its dependencies, make sure that you've enabled the INTERNET permission. Ensure that this xml is at
-the top level of AndroidManifest.xml:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-```
-
 # Making REST API Calls
 
-Since this SDK uses the [StackMob Java Client SDK](https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
+Since this SDK uses the [StackMob Java Client SDK](http://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK), much of the code here will be similar to that used in the Java SDK. The code below, for example, shows how to create a game object. All of the following code assumes you have your app set up correctly, and it has a game object model that matches the Game class below.
 
 ```java
 import java.util.List;
@@ -183,9 +186,9 @@ stackmob.delete("game", "charades", new StackMobCallback() {
 
 **Additional advanced queries are available in the Java Client SDK docs**
 
-The Android SDK is built upon the <a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
+The Android SDK is built upon the <a href="http://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK" target="_blank">Java Client SDK</a>.
 
-<a href="https://www.stackmob.com/platform/stackmob/help/topics/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to **perform range queries**, **query for multiple values**, **expand relationships**, and more in the Java Client SDK docs.</a>
+<b><a href="https://www.stackmob.com/devcenter/docs/Getting-Started:-Java-Client-SDK#a-advanced_queries" target="_blank">Read how to perform range queries, query for multiple values, expand relationships, and more in the Java Client SDK docs.</a></b>
 
 ### Facebook Registration
 Register a new user with a Facebook token:
