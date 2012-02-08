@@ -20,8 +20,8 @@ import com.stackmob.sdk.exception.StackMobException;
 
 public interface StackMobFacebookCallback {
 
-  void success(String token, long accessExpires);
+    void success(String token, long accessExpires);
 
-  void failure(StackMobException e);
+    void failure(StackMobException e);
 
 }

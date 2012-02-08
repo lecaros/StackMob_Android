@@ -20,7 +20,7 @@ import com.stackmob.sdk.exception.StackMobException;
 
 public interface StackMobTwitterCallback {
 
-  void success(String token, String tokenSecret);
+    void success(String token, String tokenSecret);
 
-  void failure(StackMobException e);
+    void failure(StackMobException e);
 }
